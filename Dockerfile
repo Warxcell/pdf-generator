@@ -14,10 +14,10 @@ WORKDIR /app
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome-unstable
 
-COPY ./pdf_generator/package*.json ./
+COPY ./package.json ./yarn.lock ./
 RUN yarn install
 
-COPY ./pdf_generator .
+COPY ./ .
 
 ENTRYPOINT node index.js
 
