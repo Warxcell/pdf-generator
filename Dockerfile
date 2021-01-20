@@ -17,7 +17,7 @@ ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome-unstable
 COPY ./package.json ./yarn.lock ./
 RUN yarn install
 
-COPY ./ .
+COPY ./index.js ./
 
 ENTRYPOINT node index.js
 
