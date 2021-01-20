@@ -19,9 +19,6 @@ RUN yarn install
 
 COPY ./index.js ./
 
-ENTRYPOINT node index.js
-
-
 ENTRYPOINT ["node", "index.js"]
 CMD []
 
