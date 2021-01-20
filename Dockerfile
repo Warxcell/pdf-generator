@@ -1,4 +1,4 @@
-FROM node:10-slim
+FROM node:14-slim
 
 RUN apt-get update \
     && apt-get install -y wget gnupg \
@@ -20,5 +20,9 @@ RUN yarn install
 COPY ./index.js ./
 
 ENTRYPOINT node index.js
+
+
+ENTRYPOINT ["node", "index.js"]
+CMD []
 
 EXPOSE 3000
