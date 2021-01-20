@@ -36,15 +36,14 @@ app.listen(3000, () => {
 });
 
 async function generatePDF(html) {
+    console.log("Launching browser...");
+
+    const browser = await puppeteer.launch({
+        headless: true,
+        args: ['--no-sandbox'],
+    });
+
     try {
-        console.log("Launching browser...");
-
-        const browser = await puppeteer.launch({
-            headless: true,
-            args: ['--no-sandbox'],
-        });
-
-
         console.log("Opening new page...");
 
         const page = await browser.newPage();
