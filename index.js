@@ -42,7 +42,7 @@ async function generatePDF(html) {
         headless: true,
         args: ['--no-sandbox'],
     });
-
+    
     try {
         console.log("Opening new page...");
 
