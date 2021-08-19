@@ -42,19 +42,22 @@ async function generatePDF(html) {
         headless: true,
         args: ['--no-sandbox'],
     });
-    
+
     try {
         console.log("Opening new page...");
 
         const page = await browser.newPage();
 
         page.on('requestfailed', request => {
-            console.log(`url: ${request.url()}, errText: ${request.failure().errorText}, method: ${request.method()}`)
+            console.error(`Request failed: url: ${request.url()}, text: ${request.failure().errorText}, method: ${request.method()}`)
         });
         // Catch console log errors
         page.on("pageerror", err => {
-            console.log(`Page error: ${err.toString()}`);
+            console.error(`Page error: ${err}`);
         });
+        page.on('error', err => {
+            console.error(`Error: ${err}`);
+        })
 
         console.log("Setting content...");
         await page.setContent(html, {'waitUntil': 'networkidle0'});
